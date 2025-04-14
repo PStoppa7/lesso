@@ -269,13 +269,29 @@
 </select>
 
 
-        <label for="package">Package Interested In:</label>
-        <select id="package" name="package">
-          <option value="individual_basic">Individual Once-Off - R250</option>
-          <option value="individual_10hr">Individual - 10hr Package</option>
-          <option value="group_basic">Group Once-Off - R100 pp</option>
-          <option value="group_20hr">Group - 20hr Package</option>
-        </select>
+       <label for="package">Package Interested In:</label>
+<select id="package" name="package">
+  <!-- INDIVIDUAL ONCE-OFF OPTIONS -->
+  <option value="individual_once_250">Individual Once-Off - R250 (1hr, Homework/Assignment)</option>
+  <option value="individual_once_350">Individual Once-Off - R350 (1hr, Required Lesson + Notes)</option>
+  <option value="individual_once_450">Individual Once-Off - R450 (1hr Lesson + 30min Test)</option>
+
+  <!-- INDIVIDUAL HOUR PACKAGES -->
+  <option value="individual_10hr">Individual Package - R3,000 (9hrs + 1hr free)</option>
+  <option value="individual_20hr">Individual Package - R5,800 (18hrs + 2hrs free)</option>
+  <option value="individual_30hr">Individual Package - R7,500 (27hrs + 3hrs free)</option>
+
+  <!-- GROUP ONCE-OFF OPTIONS -->
+  <option value="group_once_100">Group Once-Off - R100 pp (1hr, Homework/Assignment)</option>
+  <option value="group_once_200">Group Once-Off - R200 pp (1hr, Required Lesson + Notes)</option>
+  <option value="group_once_300">Group Once-Off - R300 pp (1hr Lesson + 30min Test)</option>
+
+  <!-- GROUP HOUR PACKAGES -->
+  <option value="group_10hr">Group Package - R2,400 pp (10hrs)</option>
+  <option value="group_20hr">Group Package - R4,700 pp (20hrs)</option>
+  <option value="group_30hr">Group Package - R6,600 pp (30hrs)</option>
+</select>
+
 
         <label for="message">Any Questions?</label>
         <textarea id="message" name="message" rows="4"></textarea>
