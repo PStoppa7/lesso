@@ -15,10 +15,6 @@
       color: #333;
     }
 
-    body {
-      flex: 1;
-    }
-
     main {
       flex: 1;
     }
@@ -30,21 +26,32 @@
       color: white;
     }
 
-    /* NAVIGATION STYLING */
     .nav-container {
+      background-color: black;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      background-color: black;
+      position: relative;
+      flex-wrap: wrap;
     }
 
-    .nav-links {
+    .logo {
+      color: #4CAF50;
+      font-size: 1.2rem;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    nav.nav-links {
       display: flex;
       gap: 2rem;
+      justify-content: center;
+      flex: 2;
+      transition: max-height 0.4s ease-in-out;
     }
 
-    .nav-links a {
+    nav.nav-links a {
       text-decoration: none;
       color: #4CAF50;
       font-weight: bold;
@@ -54,6 +61,7 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
+      z-index: 1001;
     }
 
     .hamburger span {
@@ -64,24 +72,48 @@
       transition: all 0.3s ease;
     }
 
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
         flex-direction: column;
         background-color: black;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        padding: 1rem;
+        max-height: 0;
+        overflow: hidden;
       }
 
       .nav-links.active {
-        display: flex;
+        max-height: 500px;
       }
 
       .hamburger {
         display: flex;
+      }
+
+      .nav-container {
+        flex-wrap: nowrap;
+      }
+
+      .logo {
+        flex: 1;
+      }
+
+      nav.nav-links {
+        flex: unset;
       }
     }
 
@@ -137,7 +169,7 @@
 
     body::before {
       content: "";
-      background-image: url('a1.jpg');
+      background-image: url('a1.jpg'); /* Replace with your background */
       background-size: cover;
       background-position: center;
       position: fixed;
@@ -157,7 +189,8 @@
   </header>
 
   <div class="nav-container">
-    <div class="hamburger" onclick="toggleMenu()">
+    <div class="logo">📚 PhenyoTutors</div>
+    <div class="hamburger" onclick="toggleMenu(this)">
       <span></span>
       <span></span>
       <span></span>
@@ -170,109 +203,97 @@
   </div>
 
   <main>
-    <section class="section" id="individual">
+    <section id="individual" class="section">
       <h2>Individual Packages</h2>
-      <h3>Once-Off</h3>
       <table>
-        <tr><th>Price</th><th>Duration</th><th>Includes</th></tr>
-        <tr><td>R250</td><td>1 Hour</td><td>Homework / Assignment Assistance</td></tr>
-        <tr><td>R350</td><td>1 Hour</td><td>Required Lesson + Lesson Notes</td></tr>
-        <tr><td>R450</td><td>1 Hour + 30min</td><td>Lesson + Notes + Test (Exam Type)</td></tr>
-      </table>
-
-      <h3>Hourly Packages</h3>
-      <table>
-        <tr><th>Price</th><th>Total Hours</th><th>Includes</th></tr>
-        <tr><td>R3,000</td><td>9h + 1 Free Hour</td><td>Lessons, Notes, Exercises, Tests, Progress Report</td></tr>
-        <tr><td>R5,800</td><td>18h + 2 Free Hours</td><td>Lessons, Notes, Exercises, Tests, 2 Progress Reports</td></tr>
-        <tr><td>R7,500</td><td>27h + 3 Free Hours</td><td>Lessons, Notes, Exercises, Tests, 3 Progress Reports</td></tr>
-      </table>
-    </section>
-
-    <section class="section" id="group">
-      <h2>Group Packages (Min. 3 People)</h2>
-      <h3>Once-Off</h3>
-      <table>
-        <tr><th>Price (per person)</th><th>Duration</th><th>Includes</th></tr>
-        <tr><td>R100</td><td>1 Hour</td><td>Homework / Assignment Assistance</td></tr>
-        <tr><td>R200</td><td>1 Hour</td><td>Lesson + Lesson Notes</td></tr>
-        <tr><td>R300</td><td>1 Hour + 30min</td><td>Lesson + Notes + Test (Exam Type)</td></tr>
-      </table>
-
-      <h3>Hourly Packages</h3>
-      <table>
-        <tr><th>Price (per person)</th><th>Total Hours</th><th>Includes</th></tr>
-        <tr><td>R2,400</td><td>10 Hours</td><td>Lessons, Notes, Exercises, Tests, Progress Report</td></tr>
-        <tr><td>R4,700</td><td>20 Hours</td><td>Lessons, Notes, Exercises, Tests, 2 Progress Reports</td></tr>
-        <tr><td>R6,600</td><td>30 Hours</td><td>Lessons, Notes, Exercises, Tests, 3 Progress Reports</td></tr>
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Subjects</th>
+            <th>Sessions</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bronze</td>
+            <td>1</td>
+            <td>4 (1/week)</td>
+            <td>R400</td>
+          </tr>
+          <tr>
+            <td>Silver</td>
+            <td>2</td>
+            <td>8 (2/week)</td>
+            <td>R750</td>
+          </tr>
+          <tr>
+            <td>Gold</td>
+            <td>3+</td>
+            <td>12 (3/week)</td>
+            <td>R1000</td>
+          </tr>
+        </tbody>
       </table>
     </section>
 
-    <section class="section" id="contact">
+    <section id="group" class="section">
+      <h2>Group Packages</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Group Size</th>
+            <th>Sessions</th>
+            <th>Price per Student</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Starter</td>
+            <td>3–5</td>
+            <td>4</td>
+            <td>R300</td>
+          </tr>
+          <tr>
+            <td>Standard</td>
+            <td>5–8</td>
+            <td>8</td>
+            <td>R550</td>
+          </tr>
+          <tr>
+            <td>Intensive</td>
+            <td>8–10</td>
+            <td>12</td>
+            <td>R800</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact" class="section">
       <h2>Contact & Booking</h2>
-      <p>If you'd like to book a lesson or ask a question, feel free to reach out!</p>
-
-      <h3>📞 Contact Details</h3>
-      <ul>
-        <li><strong>Phone:</strong> 076 123 4567</li>
-        <li><strong>Email:</strong> bookings@phenyotutoring.co.za</li>
-        <li><strong>Location:</strong> South Africa (Online & In-Person Options)</li>
-      </ul>
-
-      <h3>💳 Payment Details</h3>
-      <p>Please make payment before booking. Send proof of payment using the form below.</p>
-      <ul>
-        <li><strong>Bank:</strong> Capitec Bank</li>
-        <li><strong>Account Name:</strong> Phenyo Tutoring</li>
-        <li><strong>Account Number:</strong> 1234567890</li>
-        <li><strong>Branch Code:</strong> 470010</li>
-        <li><strong>Reference:</strong> Your Full Name</li>
-      </ul>
-
-      <h3>📝 Quick Booking Form</h3>
-      <form action="https://formsubmit.co/sebogodiphenyo7@gmail.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_next" value="https://pstoppa7.github.io/lesson/thank-you.html">
-        <input type="hidden" name="_captcha" value="false">
-
+      <form>
         <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" required>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" required>
 
-        <label for="grade">Grade:</label>
-        <select id="grade" name="grade" required>
-          <option value="">Select Grade</option>
-          <option value="Grade 8">Grade 8</option>
-          <option value="Grade 9">Grade 9</option>
-          <option value="Grade 10">Grade 10</option>
-          <option value="Grade 11">Grade 11</option>
-          <option value="Grade 12">Grade 12</option>
+        <label for="package">Select Package:</label>
+        <select id="package">
+          <option value="bronze">Individual - Bronze</option>
+          <option value="silver">Individual - Silver</option>
+          <option value="gold">Individual - Gold</option>
+          <option value="starter">Group - Starter</option>
+          <option value="standard">Group - Standard</option>
+          <option value="intensive">Group - Intensive</option>
         </select>
 
-        <label for="package">Package Interested In:</label>
-        <select id="package" name="package">
-          <option value="individual_once_250">Individual Once-Off - R250 (1hr, Homework/Assignment)</option>
-          <option value="individual_once_350">Individual Once-Off - R350 (1hr, Required Lesson + Notes)</option>
-          <option value="individual_once_450">Individual Once-Off - R450 (1hr Lesson + 30min Test)</option>
-          <option value="individual_10hr">Individual Package - R3,000 (9hrs + 1hr free)</option>
-          <option value="individual_20hr">Individual Package - R5,800 (18hrs + 2hrs free)</option>
-          <option value="individual_30hr">Individual Package - R7,500 (27hrs + 3hrs free)</option>
-          <option value="group_once_100">Group Once-Off - R100 pp (1hr, Homework/Assignment)</option>
-          <option value="group_once_200">Group Once-Off - R200 pp (1hr, Required Lesson + Notes)</option>
-          <option value="group_once_300">Group Once-Off - R300 pp (1hr Lesson + 30min Test)</option>
-          <option value="group_10hr">Group Package - R2,400 pp (10hrs)</option>
-          <option value="group_20hr">Group Package - R4,700 pp (20hrs)</option>
-          <option value="group_30hr">Group Package - R6,600 pp (30hrs)</option>
-        </select>
+        <label for="message">Additional Notes:</label>
+        <textarea id="message" rows="4"></textarea>
 
-        <label for="message">Any Questions?</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-
-        <label for="proof">Upload Proof of Payment (PDF, JPG, PNG):</label>
-        <input type="file" id="proof" name="attachment" accept=".pdf,.jpg,.jpeg,.png" />
-
-        <button type="submit">Submit</button>
+        <button type="submit">Book Now</button>
       </form>
     </section>
   </main>
@@ -282,9 +303,10 @@
   </footer>
 
   <script>
-    function toggleMenu() {
+    function toggleMenu(element) {
       const nav = document.getElementById("navLinks");
       nav.classList.toggle("active");
+      element.classList.toggle("active");
     }
 
     window.addEventListener("pageshow", function (event) {
