@@ -15,10 +15,6 @@
       color: #333;
     }
 
-    main {
-      flex: 1;
-    }
-
     header {
       background-color: black;
       padding: 1.5rem;
@@ -27,41 +23,32 @@
     }
 
     .nav-container {
-      background-color: black;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      background-color: black;
       padding: 1rem;
       position: relative;
-      flex-wrap: wrap;
     }
 
-    .logo {
-      color: #4CAF50;
-      font-size: 1.2rem;
-      font-weight: bold;
-      flex: 1;
-    }
-
-    nav.nav-links {
+    .nav-links {
       display: flex;
       gap: 2rem;
-      justify-content: center;
-      flex: 2;
-      transition: max-height 0.4s ease-in-out;
     }
 
-    nav.nav-links a {
+    .nav-links a {
       text-decoration: none;
       color: #4CAF50;
       font-weight: bold;
     }
 
     .hamburger {
+      position: absolute;
+      left: 1rem;
       display: none;
       flex-direction: column;
       cursor: pointer;
-      z-index: 1001;
+      z-index: 10;
     }
 
     .hamburger span {
@@ -86,34 +73,22 @@
 
     @media (max-width: 768px) {
       .nav-links {
+        display: none;
         flex-direction: column;
         background-color: black;
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
         width: 100%;
-        max-height: 0;
-        overflow: hidden;
+        padding: 1rem;
       }
 
       .nav-links.active {
-        max-height: 500px;
+        display: flex;
       }
 
       .hamburger {
         display: flex;
-      }
-
-      .nav-container {
-        flex-wrap: nowrap;
-      }
-
-      .logo {
-        flex: 1;
-      }
-
-      nav.nav-links {
-        flex: unset;
       }
     }
 
@@ -164,12 +139,11 @@
       color: white;
       padding: 1.5rem;
       text-align: center;
-      width: 100%;
     }
 
     body::before {
       content: "";
-      background-image: url('a1.jpg'); /* Replace with your background */
+      background-image: url('a1.jpg');
       background-size: cover;
       background-position: center;
       position: fixed;
@@ -189,7 +163,6 @@
   </header>
 
   <div class="nav-container">
-    <div class="logo">📚 PhenyoTutors</div>
     <div class="hamburger" onclick="toggleMenu(this)">
       <span></span>
       <span></span>
@@ -203,97 +176,90 @@
   </div>
 
   <main>
-    <section id="individual" class="section">
+    <section class="section" id="individual">
       <h2>Individual Packages</h2>
+      <h3>Once-Off</h3>
       <table>
-        <thead>
-          <tr>
-            <th>Package</th>
-            <th>Subjects</th>
-            <th>Sessions</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Bronze</td>
-            <td>1</td>
-            <td>4 (1/week)</td>
-            <td>R400</td>
-          </tr>
-          <tr>
-            <td>Silver</td>
-            <td>2</td>
-            <td>8 (2/week)</td>
-            <td>R750</td>
-          </tr>
-          <tr>
-            <td>Gold</td>
-            <td>3+</td>
-            <td>12 (3/week)</td>
-            <td>R1000</td>
-          </tr>
-        </tbody>
+        <tr><th>Price</th><th>Duration</th><th>Includes</th></tr>
+        <tr><td>R250</td><td>1 Hour</td><td>Homework / Assignment Assistance</td></tr>
+        <tr><td>R350</td><td>1 Hour</td><td>Required Lesson + Lesson Notes</td></tr>
+        <tr><td>R450</td><td>1 Hour + 30min</td><td>Lesson + Notes + Test (Exam Type)</td></tr>
+      </table>
+
+      <h3>Hourly Packages</h3>
+      <table>
+        <tr><th>Price</th><th>Total Hours</th><th>Includes</th></tr>
+        <tr><td>R3,000</td><td>9h + 1 Free Hour</td><td>Lessons, Notes, Exercises, Tests, Progress Report</td></tr>
+        <tr><td>R5,800</td><td>18h + 2 Free Hours</td><td>Lessons, Notes, Exercises, Tests, 2 Progress Reports</td></tr>
+        <tr><td>R7,500</td><td>27h + 3 Free Hours</td><td>Lessons, Notes, Exercises, Tests, 3 Progress Reports</td></tr>
       </table>
     </section>
 
-    <section id="group" class="section">
-      <h2>Group Packages</h2>
+    <section class="section" id="group">
+      <h2>Group Packages (Min. 3 People)</h2>
+      <h3>Once-Off</h3>
       <table>
-        <thead>
-          <tr>
-            <th>Package</th>
-            <th>Group Size</th>
-            <th>Sessions</th>
-            <th>Price per Student</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Starter</td>
-            <td>3–5</td>
-            <td>4</td>
-            <td>R300</td>
-          </tr>
-          <tr>
-            <td>Standard</td>
-            <td>5–8</td>
-            <td>8</td>
-            <td>R550</td>
-          </tr>
-          <tr>
-            <td>Intensive</td>
-            <td>8–10</td>
-            <td>12</td>
-            <td>R800</td>
-          </tr>
-        </tbody>
+        <tr><th>Price (per person)</th><th>Duration</th><th>Includes</th></tr>
+        <tr><td>R100</td><td>1 Hour</td><td>Homework / Assignment Assistance</td></tr>
+        <tr><td>R200</td><td>1 Hour</td><td>Lesson + Lesson Notes</td></tr>
+        <tr><td>R300</td><td>1 Hour + 30min</td><td>Lesson + Notes + Test (Exam Type)</td></tr>
+      </table>
+
+      <h3>Hourly Packages</h3>
+      <table>
+        <tr><th>Price (per person)</th><th>Total Hours</th><th>Includes</th></tr>
+        <tr><td>R2,400</td><td>10 Hours</td><td>Lessons, Notes, Exercises, Tests, Progress Report</td></tr>
+        <tr><td>R4,700</td><td>20 Hours</td><td>Lessons, Notes, Exercises, Tests, 2 Progress Reports</td></tr>
+        <tr><td>R6,600</td><td>30 Hours</td><td>Lessons, Notes, Exercises, Tests, 3 Progress Reports</td></tr>
       </table>
     </section>
 
-    <section id="contact" class="section">
+    <section class="section" id="contact">
       <h2>Contact & Booking</h2>
-      <form>
+
+      <form action="https://formsubmit.co/sebogodiphenyo7@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_next" value="https://pstoppa7.github.io/lesson/thank-you.html">
+        <input type="hidden" name="_captcha" value="false">
+
         <label for="name">Full Name:</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name" name="name" required>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email" name="email" required>
 
-        <label for="package">Select Package:</label>
-        <select id="package">
-          <option value="bronze">Individual - Bronze</option>
-          <option value="silver">Individual - Silver</option>
-          <option value="gold">Individual - Gold</option>
-          <option value="starter">Group - Starter</option>
-          <option value="standard">Group - Standard</option>
-          <option value="intensive">Group - Intensive</option>
+        <label for="grade">Select Grade:</label>
+        <select id="grade" name="grade" required>
+          <option value="">-- Choose Grade --</option>
+          <option value="Grade 8">Grade 8</option>
+          <option value="Grade 9">Grade 9</option>
+          <option value="Grade 10">Grade 10</option>
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12">Grade 12</option>
         </select>
 
-        <label for="message">Additional Notes:</label>
-        <textarea id="message" rows="4"></textarea>
+        <label for="package">Package Interested In:</label>
+        <select id="package" name="package">
+          <option value="individual_once_250">Individual Once-Off - R250</option>
+          <option value="individual_once_350">Individual Once-Off - R350</option>
+          <option value="individual_once_450">Individual Once-Off - R450</option>
+          <option value="individual_10hr">Individual Package - R3,000</option>
+          <option value="individual_20hr">Individual Package - R5,800</option>
+          <option value="individual_30hr">Individual Package - R7,500</option>
+          <option value="group_once_100">Group Once-Off - R100</option>
+          <option value="group_once_200">Group Once-Off - R200</option>
+          <option value="group_once_300">Group Once-Off - R300</option>
+          <option value="group_10hr">Group Package - R2,400</option>
+          <option value="group_20hr">Group Package - R4,700</option>
+          <option value="group_30hr">Group Package - R6,600</option>
+        </select>
 
-        <button type="submit">Book Now</button>
+        <label for="message">Any Questions?</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <label for="proof">Upload Proof of Payment (PDF, JPG, PNG):</label>
+        <input type="file" id="proof" name="attachment" accept=".pdf,.jpg,.jpeg,.png" />
+
+        <button type="submit">Submit</button>
       </form>
     </section>
   </main>
@@ -303,10 +269,10 @@
   </footer>
 
   <script>
-    function toggleMenu(element) {
+    function toggleMenu(icon) {
       const nav = document.getElementById("navLinks");
+      icon.classList.toggle("active");
       nav.classList.toggle("active");
-      element.classList.toggle("active");
     }
 
     window.addEventListener("pageshow", function (event) {
